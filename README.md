@@ -1,65 +1,104 @@
-# 🛡️ Web Application Penetration Testing of YoungSkilledIndia.com
+# 🛡️ Web Application Penetration Testing Report  
 
-[cite_start]This report details a black-box penetration test conducted on the YoungSkilledIndia.com web application[cite: 3]. [cite_start]The assessment's objective was to identify security vulnerabilities and provide actionable recommendations for remediation[cite: 42, 45].
+## 🎯 Target: [YoungSkilledIndia.com](https://www.youngskilledindia.com/)  
 
----
-
-## 📌 Project Overview
-
-* [cite_start]**Project Title**: Web Application Penetration Testing [cite: 3]
-* [cite_start]**Target Application**: [YoungSkilledIndia.com](https://www.youngskilledindia.com/) [cite: 55]
-* [cite_start]**Assessment Type**: Black-Box Engagement Model (no prior knowledge of internal systems) [cite: 48, 57]
-* [cite_start]**Methodology**: Aligned with industry standards including OWASP Web Security Testing Guide (WSTG), OWASP Top 10, NIST SP 800-115, and PTES[cite: 43, 76].
+This repository documents a **Black-Box Web Application Penetration Test** conducted on **YoungSkilledIndia.com**, an educational platform providing professional development and certification courses.  
 
 ---
 
-## 🧪 Testing Scope & Rules of Engagement
+## 📌 Project Overview  
 
-| Category | Details |
-| :--- | :--- |
-| **Target URL** | [cite_start]`https://www.youngskilledindia.com/` [cite: 55] |
-| **Target IP Address** | [cite_start]`195.35.44.229` (Hostinger infrastructure) [cite: 56] |
-| **Test Type** | [cite_start]Black-box (unauthenticated external testing) [cite: 57] |
-| **Forbidden Actions** | [cite_start]Included Denial of Service (DoS/DDoS) attacks, social engineering, and disruption of production systems[cite: 59, 60, 61, 64]. |
-
----
-
-## 🔍 Key Findings & Vulnerability Summary
-
-[cite_start]The assessment identified several vulnerabilities, with severity ratings assigned based on the Common Vulnerability Scoring System (CVSS v3.1)[cite: 52, 82].
-
-| OWASP Category (2021) | Severity | Description / Observation |
-| :--- | :--- | :--- |
-| **A06: Vulnerable & Outdated Components** | High | [cite_start]Outdated Astra theme and end-of-life PHP 7.4 were identified, posing a high risk of remote code execution or data breach[cite: 87, 325, 326]. |
-| **A03: Injection** | Medium | [cite_start]The login form showed response anomalies suggesting it may be vulnerable to SQL injection, potentially leading to data exfiltration[cite: 87]. |
-| **A04: Insecure Design** | Medium | [cite_start]The application lacks MFA, CAPTCHA, and account lockout policies, making it susceptible to brute-force and credential stuffing attacks[cite: 87, 235, 236]. |
-| **A07: Identification & Authentication Failures** | Medium | [cite_start]No brute-force prevention or strong password policies were enforced, increasing account takeover risk[cite: 87]. |
-| **A08: Software & Data Integrity Failures** | Medium | [cite_start]The absence of integrity verification for plugins and themes could lead to supply chain attacks or backdoors[cite: 87]. |
-| **A05: Security Misconfiguration** | Low | [cite_start]While no sensitive data was exposed, some server responses could aid attackers in future attempts[cite: 87]. |
-| **A02: Cryptographic Failures** | Low | [cite_start]The application correctly enforces HTTPS and strong TLS protocols (TLS 1.2/1.3), posing minimal risk[cite: 87, 167]. |
+- **Assessment Type**: Black-box (no source code access)  
+- **Duration**: July 2025 – August 2025  
+- **Testing Model**: Based on [OWASP WSTG](https://owasp.org/www-project-web-security-testing-guide/) & OWASP Top 10 (2021)  
+- **Tools Used**:  
+  - Reconnaissance → Sublist3r, theHarvester, crt.sh  
+  - Scanning & Enumeration → Nmap, WPScan, WhatWeb, Wappalyzer  
+  - Proxy Testing → Burp Suite (Community Edition)  
+  - Utilities → Dig, Dirsearch, SSL Labs  
+- **Permission**: Explicit written approval obtained from the site owner  
 
 ---
 
-## 🧰 Tools & Technologies Utilized
+## 🧪 Scope of Testing  
 
-[cite_start]A combination of industry-standard tools was used to conduct the reconnaissance, scanning, and vulnerability analysis phases[cite: 70]:
-
-* [cite_start]**Proxy Tools**: Burp Suite Community Edition [cite: 71]
-* [cite_start]**Reconnaissance**: Sublist3r, Whois, crt.sh, theHarvester [cite: 72]
-* [cite_start]**Scanning & Enumeration**: Nmap, WPScan, WhatWeb, Wappalyzer [cite: 73]
-* [cite_start]**Supporting Utilities**: Dig, Dirsearch, SSL Labs [cite: 74]
+| Category             | Details |
+|----------------------|---------|
+| **Target URL**       | https://www.youngskilledindia.com/ |
+| **Test Type**        | External Black-box |
+| **Authentication**   | Public areas only |
+| **Forbidden Actions**| DoS/DDoS, brute force beyond PoC, social engineering, live data exploitation, destructive testing |
 
 ---
 
-## 📄 Report Contents
+## 📖 Methodology  
 
-The full project report provides an in-depth analysis of the security assessment and includes the following sections:
+Testing followed a structured approach:  
 
-* [cite_start]**Executive Summary**: A high-level overview of the engagement's purpose and key findings[cite: 12, 46].
-* [cite_start]**Scope & Rules of Engagement**: Defines the target environment, boundaries, and permitted actions[cite: 13, 53].
-* [cite_start]**Methodology**: Details the systematic approach and phases of the penetration test[cite: 18, 75].
-* [cite_start]**Information Gathering**: Outlines the data collected during passive and active reconnaissance[cite: 20, 88].
-* [cite_start]**Technical Findings**: Provides a detailed breakdown of each identified vulnerability, mapped to the OWASP Top 10[cite: 25, 123].
-* [cite_start]**Recommendations**: Offers specific, actionable steps to remediate the identified vulnerabilities and strengthen the application's security posture[cite: 34, 457].
-* [cite_start]**Conclusion**: Summarizes the overall security risk and the importance of proactive security maintenance[cite: 35, 478].
-* [cite_start]**Appendices**: Contains supplementary evidence, including scan results and Proof-of-Concept screenshots[cite: 36, 483].
+1. **Reconnaissance** – Passive info gathering (WHOIS, DNS, SSL, Subdomains).  
+2. **Enumeration** – Active probing (directories, services, components).  
+3. **Vulnerability Analysis** – Testing against OWASP Top 10 categories.  
+4. **Exploitation (Non-Destructive)** – Controlled PoC demonstrations.  
+5. **Risk Assessment** – Severity scoring via CVSS v3.1.  
+6. **Reporting** – Structured findings with business impact & remediation.  
+
+---
+
+## 🔍 Vulnerability Summary  
+
+| OWASP 2021 Category | Finding ID | Severity | Status | Description |
+|----------------------|------------|----------|--------|-------------|
+| A01: Broken Authentication | A01-01 | N/A | Not Vulnerable | No username enumeration/session issues |
+| A02: Cryptographic Failures | A02-001 | Low | Informational | HTTPS enforced, TLS strong, minor cipher notice |
+| A03: Injection | A03-001 | Medium | Vulnerable | SQLi suspected in login form |
+| A04: Insecure Design | A04-001 | Medium | Vulnerable | No MFA, no CAPTCHA, unlimited login attempts |
+| A05: Security Misconfiguration | A05-001 | Low | Vulnerable | Minor file access anomalies (200/403/404 codes) |
+| A06: Vulnerable & Outdated Components | A06-001 | High | Vulnerable | Astra theme outdated, PHP 7.4 EOL, readme.html exposed |
+| A07: Identification & Authentication Failures | A07-001 | Medium | Vulnerable | Weak password policy, no brute force prevention |
+| A08: Software & Data Integrity Failures | A08-001 | Medium | Vulnerable | No plugin/theme integrity validation |
+
+---
+
+## ⚠️ Key Findings  
+
+- **Outdated Components**: PHP 7.4 (EOL), Astra theme outdated → Risk of RCE.  
+- **Authentication Weaknesses**: No CAPTCHA, no MFA, weak password enforcement.  
+- **SQL Injection Indicators**: Variances in login responses hint possible SQLi.  
+- **Security Misconfigurations**: Exposed readme.html, misleading HTTP codes.  
+- **No WAF Detected**: Site directly exposed to automated exploit attempts.  
+
+---
+
+## 📷 Proof of Concept (PoC)  
+
+- BurpSuite captures (login requests, brute-force attempts).  
+- Nmap SSL/TLS scan results.  
+- WPScan output (outdated theme/plugins).  
+- Screenshots of exposed files (e.g., `/readme.html`).  
+
+*(Evidence included in `/evidence` folder of this repo)*  
+
+---
+
+## 🛡 Recommendations  
+
+- **Patch Management**: Upgrade PHP ≥ 8.2, update Astra theme & plugins.  
+- **Authentication Security**: Enforce MFA, strong password policy, CAPTCHA.  
+- **Configuration Hardening**: Remove /readme.html, restrict sensitive files.  
+- **Network Protection**: Deploy WAF (Cloudflare, ModSecurity).  
+- **Monitoring**: Enable brute-force detection, implement incident response plan.  
+
+---
+
+## ✅ Conclusion  
+
+The assessment revealed **critical and medium-risk vulnerabilities** that, if exploited, could lead to **RCE, site defacement, or data compromise**.  
+By addressing outdated components, hardening authentication, and adopting a proactive vulnerability management strategy, **YoungSkilledIndia.com** can significantly strengthen its security posture.  
+
+---
+
+## 📂 Repository Contents  
+
+- `README.md` (this file)  
+- `/report` → Full penetration testing report (Major Project.docx)  
+- `/evidence` → Screenshots, scan outputs, Burp logs  
