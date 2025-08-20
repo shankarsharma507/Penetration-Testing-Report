@@ -101,4 +101,4 @@ By addressing outdated components, hardening authentication, and adopting a proa
 
 - `README.md` (this file)  
 - `/report` → Full penetration testing report (Major Project.docx)  
-- `/evidence` → Screenshots, scan outputs, Burp logs  
+
